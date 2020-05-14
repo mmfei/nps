@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+    nps_server:
+        image: ffdfgdfg/nps
+        container_name: nps_server
+        restart: always
+        ports:
+            - 10080:80
+            - 10180:8080
+            - 10124:8024
+            - 10150-10179:10150-10179
+        volumes:
+            - "./conf/:/conf/:rw"
+            - "./web/:/web/:rw"
+        command:
+            - /nps
+        networks:
+            - "mmfei_network_frontend"
+            - "mmfei_network_backend"
+
+networks:
+    mmfei_network_frontend:
+      external: true
+        # name: openresty_dockerfile_mmfei_network_backend
+    mmfei_network_backend:
+      external: true
+        # name: openresty_dockerfile_mmfei_network_frontend
