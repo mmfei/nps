@@ -1,0 +1,20 @@
+version: 3
+services:
+  npc_service:
+    image: ffdfgdfg/npc
+    container_name: npc_service
+    restart: always
+    command: "/npc"
+    volumes: 
+      - ./conf:/conf:rw
+    # ports: 
+    #   -
+    networks:
+      - "mmfei_network_frontend"
+      - "mmfei_network_backend"
+
+networks:
+    mmfei_network_frontend:
+      external: true
+    mmfei_network_backend:
+      external: true
